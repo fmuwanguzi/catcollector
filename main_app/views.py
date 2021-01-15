@@ -68,7 +68,7 @@ class CatToyCreate(CreateView):
     fields = '__all__'
     success_url = '/cattoys'
 
-class CatTotUpdate(UpdateView):
+class CatToyUpdate(UpdateView):
     model = CatToy
     fields = [ 'name', 'color']
     success_url = '/cattoys'
