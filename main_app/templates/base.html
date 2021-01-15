@@ -10,11 +10,20 @@
 </head>
 <body>
     
+    <header>
 
-    <a href="/cats">
-        <h1>CatCollecter</h1>
-    </a>
-
+        {% if user.is_authenticated %}
+        <span><a href="{% url 'profile' user.username %}">Hello, {{ user.username }}</a></span> |
+        <span><a href="{% url 'logout' %}">Logout</a></span>
+        {% else %}
+        <span><a href="{% url 'login'  %}">Login</a></span>|
+        <span><a href="{% url 'signup'  %}">Signup</a></span>
+        {% endif %}
+        
+        <a href="/cats">
+            <h1>CatCollecter</h1>
+        </a>
+    </header>
     {% block content %}
     {% endblock %}
     <footer>All Rights Reserved, CatCollecter 2021 </footer>

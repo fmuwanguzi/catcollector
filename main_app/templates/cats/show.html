@@ -7,10 +7,18 @@
     {% if cat.age > 0 %}
         <p> Age: {{ cat.age }}</p>
     {% else %}
-        <p> Age: {{ cat.age }}</p>
+        <p> Age: Kitten</p>
     {% endif %}
 
+    {% for cattoy in cat.cattoys.all %}
+        <p>{{ cattoy.name }}</p>
+    {% empty %}
+        <p>Cat has not toys ...</p>
+    {% endfor %}
+
+    {% if user.is_authenticatted %}
     <a class="btn btn-primary" href="{% url 'cats_update' cat.id %}">Update Details</a>
     <a class="btn btn-danger" href="{% url 'cats_delete' cat.id %}">Delete Cat</a>
+    {% endif %}
 </div>
 {% endblock %}
